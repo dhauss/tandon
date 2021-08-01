@@ -10,7 +10,7 @@ int main() {
     cin >> n;
     cout<<endl;
 
-    for(lineCountDown = n; lineCountDown >= 1; lineCountDown--) {
+    for(lineCountDown = n; lineCountDown > 0; lineCountDown--) {
         for(spaceCountTop = (n - lineCountDown); spaceCountTop > 0; spaceCountTop--)
             cout << " ";
         for(starCountTop = ((2 * lineCountDown) - 1); starCountTop > 0; starCountTop-- )
@@ -28,7 +28,3 @@ int main() {
 
     return 0;
 }
-
-//1 + 2(n-1)
-//1, 1+2, 1+4, 1+6
-//n - n--
