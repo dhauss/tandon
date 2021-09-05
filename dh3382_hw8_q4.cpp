@@ -3,15 +3,16 @@
 #include<ctime>
 using namespace std;
 
-const int USER_PIN = 19082;
+const int PIN_LENGTH = 5;
+const int USER_PIN [PIN_LENGTH] = {0, 1, 2, 3, 4};
 
 void arrPinPrint(int arr[], int arrSize);
 void arrNumPrint(int arr[], int arrSize);
-void checkPin(int pin, int arrNum[]);
+void checkPin(const int pin[], int arrNum[]);
 int main() {
     int pinArr[10];
     int numArr[10];
-
+    
     cout<<"Please enter your PIN according to the following mapping:\n";
     arrPinPrint(pinArr, 10);
     arrNumPrint(numArr, 10);
@@ -43,18 +44,18 @@ void arrNumPrint(int arr[], int arrSize) {
     cout<<endl;
 }
 
-void checkPin(int pin, int arrNum[]) {
+void checkPin(const int pin[], int arrNum[]) {
     bool pinCheck = true;
-    int currDigit, currPin, currPinDigit, counter;
+    int currDigit, currPin, currPinDigit, i;
 
     cin>>currPin;
-    for(counter = 5; counter > 0; counter--) {
-        currDigit = pin % 10;
+    for(i = PIN_LENGTH - 1; i > 0; i--) {
+        currDigit = pin[i];
         currPinDigit = currPin % 10;
+        
         if(currPinDigit != arrNum[currDigit])
             pinCheck = false;
 
-        pin /= 10;
         currPin /= 10;
     }
 
